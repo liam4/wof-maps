@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pyrrhia Map Comparisons</title>
+
+    <link rel='stylesheet' href='map.css'>
+  </head>
+  <body>
+
+    <map-root id='map' data-default-layer='first-arc'>
+
+      <map-layer data-layer='darkstalker'>
+        <img src='map-images/map0.jpg'>
+
+        <map-interest data-position='130 1100' data-size='400 350'>
+          <p>
+            Here's the old Night Kingdom, which isn't in any of the newer
+            maps - in fact, it's actually gone in the future! Who knows how it
+            disappeared, though..
+          </p>
+        </map-interest>
+
+        <map-interest data-position='1530 265' data-size='350 100'>
+          <p>
+            This is now <em>specifically</em> a map of Pyrrhia, which implies
+            that there's other places in the same world. It's confirmed in the
+            book that there are indeed
+            <a href='http://wingsoffire.wikia.com/wiki/The_Lost_Continent'>other continents</a>
+            to be explored..
+          </p>
+        </map-interest>
+
+        <map-interest data-position='490 810' data-size='100 100'>
+          <p>
+            The stronghold here looks more like a town, or maybe a ruined
+            stronghold?
+          </p>
+        </map-interest>
+
+        <map-interest data-position='1470 410' data-size='80 80'>
+          <p>
+            This palace is only in this map..
+          </p>
+        </map-interest>
+      </map-layer>
+
+      <map-layer data-layer='first-arc'>
+        <img src='map-images/map1.jpg'>
+
+        <map-interest data-position='800 800' data-size='100 60'>
+          <p>
+            This is the entrance to the mountain cave where the dragonets of
+            destiny grew up. It's only in this map.
+          </p>
+        </map-interest>
+      </map-layer>
+
+      <map-layer data-layer='second-arc'>
+        <img src='map-images/map2.png'>
+      </map-layer>
+
+    </map-root>
+
+    <script src='map.js'></script>
+    <script>
+      const map = new WorldMap(document.getElementById('map'))
+
+      window.onbeforeunload = () => {
+        localStorage.oldSelectedLayer = map.selectedLayer
+      }
+
+      if (localStorage.oldSelectedLayer) {
+        map.selectLayer(localStorage.oldSelectedLayer)
+      }
+    </script>
+  </body>
+</html>
